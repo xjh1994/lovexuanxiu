@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="post_cate">
+        <item>课程问答</item>
+        <item>吐槽老师</item>
+        <item>教材共享</item>
+        <item>作业发布</item>
+    </string-array>
+
+    <string-array name="preference_values">
+        <item>Twitter</item>
+        <item>Google</item>
+        <item>Instagram</item>
+        <item>Facebook</item>
+    </string-array>
+
+    <string-array name="exit_choice">
+        <item>退出当前账号</item>
+        <item>关闭爱选修</item>
+    </string-array>
+
+    <string-array name="push_choice">
+        <item>开</item>
+        <item>关</item>
+    </string-array>
+
+    <string-array name="sex_choice">
+        <item>汉子</item>
+        <item>妹子</item>
+    </string-array>
+</resources>

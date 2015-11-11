@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/startLesson"
+        android:title="我要开课"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/category"
+        android:icon="@drawable/ic_list"
+        android:title="所有分类"
+        app:showAsAction="withText" />
+</menu>

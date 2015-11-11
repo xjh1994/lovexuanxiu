@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="课程名称"
+            android:inputType="textCapWords"
+            android:textCursorDrawable="@drawable/edittext_cursor_blue"
+            app:met_baseColor="@color/primarytextcolor"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelText=""
+            app:met_iconLeft="@drawable/ic_flag_grey600_24dp"
+            app:met_maxCharacters="30"
+            app:met_primaryColor="@color/secondarytext"
+            app:met_singleLineEllipsis="true"
+            app:met_textColorHint="@color/secondarytext" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/teacher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="主讲人"
+            android:inputType="textCapWords"
+            android:textCursorDrawable="@drawable/edittext_cursor_blue"
+            app:met_baseColor="@color/primarytextcolor"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelText=""
+            app:met_iconLeft="@drawable/ic_timer_auto_grey600_18dp"
+            app:met_maxCharacters="20"
+            app:met_primaryColor="@color/secondarytext"
+            app:met_singleLineEllipsis="true"
+            app:met_textColorHint="@color/secondarytext" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/class_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="上课时间"
+            android:inputType="textCapWords"
+            android:textCursorDrawable="@drawable/edittext_cursor_blue"
+            app:met_baseColor="@color/primarytextcolor"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelText=""
+            app:met_iconLeft="@drawable/ic_timer_grey600_24dp"
+            app:met_maxCharacters="20"
+            app:met_primaryColor="@color/secondarytext"
+            app:met_singleLineEllipsis="true"
+            app:met_textColorHint="@color/secondarytext" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/class_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="上课地点"
+            android:inputType="textCapWords"
+            android:textCursorDrawable="@drawable/edittext_cursor_blue"
+            app:met_baseColor="@color/primarytextcolor"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelText=""
+            app:met_iconLeft="@drawable/ic_place_grey600_24dp"
+            app:met_maxCharacters="30"
+            app:met_primaryColor="@color/secondarytext"
+            app:met_singleLineEllipsis="true"
+            app:met_textColorHint="@color/secondarytext" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:hint="课程内容"
+            android:inputType="textMultiLine"
+            android:maxLines="6"
+            android:textCursorDrawable="@drawable/edittext_cursor_blue"
+            app:met_baseColor="@color/primarytextcolor"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelText="内容要超过20字方可提交"
+            app:met_iconLeft="@drawable/ic_content_paste_grey600_24dp"
+            app:met_maxCharacters="9999"
+            app:met_primaryColor="@color/secondarytext"
+            app:met_textColorHint="@color/secondarytext" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/image"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            fresco:placeholderImage="@drawable/load_default_bg"
+            fresco:placeholderImageScaleType="fitCenter" />
+
+        <LinearLayout
+            android:id="@+id/layout_take_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/selector_layout_bg"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/take_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_photo_grey600_36dp"
+                android:drawablePadding="6dp"
+                android:gravity="center_vertical"
+                android:text="@string/btn_upload_cover"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

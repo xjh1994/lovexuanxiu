@@ -1,0 +1,98 @@
+apply plugin: 'com.android.application'
+apply plugin: 'bugly'   //添加Bugly符号表插件
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion '22.0.1'
+
+    defaultConfig {
+        applicationId "com.greentech.ixuanxiu"
+        minSdkVersion 14
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            //zip优化
+            zipAlignEnabled true
+            //移除无用的resource文件
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:22.1.1'
+    compile 'com.orhanobut:logger:1.3'
+    //打印日志
+    compile project(':smssdk')
+    //Mob短信
+    compile 'com.marshalchen.ultimaterecyclerview:library:0.3.18'
+    //RecyclerView
+    compile files('libs/butterknife-7.0.1.jar')
+    //视图注入
+    compile 'it.neokree:MaterialNavigationDrawer:1.3.3'
+    //侧滑
+    compile 'com.facebook.fresco:fresco:0.6.0+'
+    //Facebook图片加载
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
+    //MaterialEditText
+    compile 'com.github.navasmdc:MaterialDesign:1.5@aar'
+    //MAterialDesign Library
+
+    //圆形头像
+    compile 'de.hdodenhof:circleimageview:1.3.0'
+    //腾讯开发SDK
+    compile files('libs/open_sdk_r5276.jar')
+    //阿里JSON
+    compile files('libs/fastjson-1.2.7.jar')
+    //Mob ShareSDK
+    compile files('libs/MobLogCollector.jar')
+    compile files('libs/MobTools.jar')
+    compile files('libs/ShareSDK-Core-2.6.3.jar')
+    compile files('libs/ShareSDK-QQ-2.6.3.jar')
+    compile files('libs/ShareSDK-QZone-2.6.3.jar')
+    compile files('libs/ShareSDK-SinaWeibo-2.6.3.jar')
+    compile files('libs/ShareSDK-Wechat-2.6.3.jar')
+    compile files('libs/ShareSDK-Wechat-Core-2.6.3.jar')
+    compile files('libs/ShareSDK-Wechat-Favorite-2.6.3.jar')
+    compile files('libs/ShareSDK-Wechat-Moments-2.6.3.jar')
+    compile files('libs/ShareSDK-Socialization-1.0.7.jar')
+    //Material Dialog
+    compile 'com.afollestad:material-dialogs:0.7.7.0'
+    //TagCloud
+    compile 'me.gujun.android.taggroup:library:1.4@aar'
+    //MaterialTabs
+    compile 'it.neokree:MaterialTabs:0.11'
+    compile('cn.trinea.android.view.autoscrollviewpager:android-auto-scroll-view-pager:1.1.2') {
+        exclude module: 'support-v4'
+    }
+    compile 'me.relex:circleindicator:1.1.5@aar'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.daimajia.slider:library:1.1.5@aar'
+    compile 'com.squareup.okhttp:okhttp:2.2.0'
+    compile 'com.squareup.okhttp:okhttp-urlconnection:2.2.0'
+    compile 'com.squareup.picasso:picasso:2.4.0'
+    compile files('libs/GetuiExt-2.0.3.jar')
+    compile files('libs/GetuiSDK2.6.1.0.jar')
+    //WeekView
+    compile 'com.github.alamkanak:android-week-view:1.2.3'
+    //腾讯Bugly
+    compile 'com.tencent.bugly:crashreport:1.2.3.8'
+    compile files('libs/cardview-v7-21.0.0.jar')
+    compile 'com.github.paolorotolo:appintro:1.1.0'
+}
+
+bugly {
+    appId = '900011569'    //注册时分配的App ID
+    appKey = 'q35Eo4fIERXgvgCy'  //注册时分配的App Key
+}
