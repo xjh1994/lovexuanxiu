@@ -20,6 +20,7 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.greentech.ixuanxiu.Config;
+import com.greentech.ixuanxiu.R;
 import com.greentech.ixuanxiu.bean.MyUser;
 import com.greentech.ixuanxiu.ui.LoginActivity;
 import com.greentech.ixuanxiu.util.AppManager;
@@ -132,7 +133,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected MyUser getCurrentUser() {
         currentUser = MyUser.getCurrentUser(this, MyUser.class);
         if (currentUser == null) {
-            toast("登录后方可进行此操作");
+            toast(getString(R.string.toast_need_login));
+//            finish();
+            startActivity(new Intent(this, LoginActivity.class));
+            overridePendingTransition(android.R.anim.slide_in_left,
+                    android.R.anim.slide_out_right);
+            return null;
+        } else if (1 == currentUser.getStatus()) {
+            toast(getString(R.string.toast_locked_account));
 //            finish();
             startActivity(new Intent(this, LoginActivity.class));
             overridePendingTransition(android.R.anim.slide_in_left,

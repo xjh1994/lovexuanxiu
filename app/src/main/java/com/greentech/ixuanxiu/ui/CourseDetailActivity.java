@@ -53,6 +53,7 @@ import com.romainpiel.titanic.library.Titanic;
 import com.romainpiel.titanic.library.TitanicTextView;
 import com.romainpiel.titanic.library.Typefaces;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -106,6 +107,27 @@ public class CourseDetailActivity extends BaseActivity implements MyItemClickLis
         } else {
             Uri uri = Uri.parse(course.getCover());
             image.setImageURI(uri);
+        }
+
+        try {
+            BmobQuery<Course> query = new BmobQuery<>();
+            query.include("myUser");
+            query.getObject(this, course.getObjectId(), new GetListener<Course>() {
+                @Override
+                public void onSuccess(Course course) {
+                    if (null != course.getMyUser()) {
+                        author.append(course.getMyUser().getNick());
+                        author.setVisibility(View.VISIBLE);
+                    }
+                }
+
+                @Override
+                public void onFailure(int i, String s) {
+
+                }
+            });
+        } catch (NullPointerException e) {
+
         }
 
         name.setText(course.getName());
@@ -168,8 +190,8 @@ public class CourseDetailActivity extends BaseActivity implements MyItemClickLis
         learned.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                learned.setEnabled(false);
                 if (null == getCurrentUser()) return;
+                learned.setEnabled(false);
                 BmobQuery<Learned> query = new BmobQuery<Learned>();
                 BmobQuery<Course> innerCourseQuery = new BmobQuery<Course>();
                 innerCourseQuery.addWhereEqualTo("objectId", course.getObjectId());
@@ -219,6 +241,8 @@ public class CourseDetailActivity extends BaseActivity implements MyItemClickLis
         layoutDiscuss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (null == getCurrentUser()) return;
+
                 Bundle data = new Bundle();
                 data.putSerializable("course", course);
                 Intent intent = new Intent(CourseDetailActivity.this, PostListActivity.class);
@@ -337,7 +361,9 @@ public class CourseDetailActivity extends BaseActivity implements MyItemClickLis
                         rate += c.getRating();
                     }
                     rating.setRating(rate / size);
-                    score.setText(String.valueOf((double) rate / size));
+                    BigDecimal bd = new BigDecimal((double) rate / size);
+                    bd = bd.setScale(1, BigDecimal.ROUND_HALF_UP);
+                    score.setText(String.valueOf(bd));
                 } else {
                     rating.setRating(0);
                     score.setText("0");
@@ -387,6 +413,7 @@ public class CourseDetailActivity extends BaseActivity implements MyItemClickLis
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (null == getCurrentUser()) return false;
+                item.setEnabled(false);
                 Bundle data = new Bundle();
                 data.putSerializable("course", course);
                 Intent intent = new Intent(CourseDetailActivity.this, CommentCourseActivity.class);
@@ -398,8 +425,8 @@ public class CourseDetailActivity extends BaseActivity implements MyItemClickLis
         menu.add("收藏").setIcon(R.drawable.ic_star).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(final MenuItem item) {
-                item.setEnabled(false);
                 if (null == getCurrentUser()) return false;
+                item.setEnabled(false);
                 final BmobQuery<Course> query = new BmobQuery<Course>();
                 query.getObject(CourseDetailActivity.this, course.getObjectId(), new GetListener<Course>() {
                     @Override
@@ -567,6 +594,8 @@ public class CourseDetailActivity extends BaseActivity implements MyItemClickLis
     TextView place;
     @Bind(R.id.image)
     SimpleDraweeView image;
+    @Bind(R.id.author)
+    TextView author;
     @Bind(R.id.want)
     ButtonRectangle want;
     @Bind(R.id.learned)

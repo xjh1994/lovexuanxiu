@@ -12,6 +12,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.greentech.ixuanxiu.Config;
 import com.greentech.ixuanxiu.R;
 import com.greentech.ixuanxiu.bean.PostComment;
 import com.greentech.ixuanxiu.bean.Course;
@@ -74,12 +75,12 @@ public class PostCommentListAdapter extends BaseAdapter {
             if (null != context) {
                 uri = Uri.parse(myUser.getAvatarFile().getFileUrl(context));
             } else {
-                uri = Uri.parse("res://com.greentech.ixuanxiu/" + R.drawable.ic_launcher);
+                uri = Uri.parse(Config.logo_url);
             }
         } else if (!TextUtils.isEmpty(myUser.getAvatarSmall())) {
             uri = Uri.parse(myUser.getAvatarSmall());
         } else {
-            uri = Uri.parse("res://com.greentech.ixuanxiu/" + R.drawable.ic_launcher);
+            uri = Uri.parse(Config.logo_url);
         }
         holder.image.setImageURI(uri);
         holder.username.setText(myUser.getNick());

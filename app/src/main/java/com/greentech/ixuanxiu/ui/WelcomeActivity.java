@@ -46,7 +46,7 @@ public class WelcomeActivity extends AppCompatActivity/* implements Runnable */ 
         AppManager.getAppManager().addActivity(this);
 
         //可设置调试模式，当为true的时候，会在logcat的BmobChat下输出一些日志，包括推送服务是否正常运行，如果服务端返回错误，也会一并打印出来。方便开发者调试，正式发布应注释此句。
-        BmobChat.DEBUG_MODE = true;
+        BmobChat.DEBUG_MODE = false;
         //BmobIM SDK初始化--只需要这一段代码即可完成初始化
         BmobChat.getInstance(this).init(Config.applicationId);
 
@@ -113,12 +113,12 @@ public class WelcomeActivity extends AppCompatActivity/* implements Runnable */ 
                 });
 
                 WelcomeActivity.this.finish();
-                startActivity(new Intent(WelcomeActivity.this, HomeActivity.class));
+                startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
                 overridePendingTransition(android.R.anim.slide_in_left,
                         android.R.anim.slide_out_right);
             } else {
-                WelcomeActivity.this.finish();
-                /*MyUser bmobUser = MyUser.getCurrentUser(this, MyUser.class);
+//                WelcomeActivity.this.finish();
+                MyUser bmobUser = MyUser.getCurrentUser(this, MyUser.class);
                 if (bmobUser != null) {
                     startActivity(new Intent(WelcomeActivity.this, HomeActivity.class));
                     overridePendingTransition(android.R.anim.slide_in_left,
@@ -127,13 +127,13 @@ public class WelcomeActivity extends AppCompatActivity/* implements Runnable */ 
                     startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
                     overridePendingTransition(android.R.anim.slide_in_left,
                             android.R.anim.slide_out_right);
-                }*/
+                }
                 /**
                  * 直接转到首页
                  */
-                startActivity(new Intent(WelcomeActivity.this, HomeActivity.class));
-                overridePendingTransition(android.R.anim.slide_in_left,
-                        android.R.anim.slide_out_right);
+//                startActivity(new Intent(WelcomeActivity.this, HomeActivity.class));
+//                overridePendingTransition(android.R.anim.slide_in_left,
+//                        android.R.anim.slide_out_right);
             }
             finish();
 

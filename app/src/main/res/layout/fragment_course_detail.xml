@@ -31,8 +31,9 @@
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:maxWidth="180dp"
                     android:textSize="18sp"
-                    tools:text="课程名称" />
+                    tools:text="影视与影像（视听语言与创意表达）" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -84,7 +85,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:maxLines="3"
+                    android:maxLines="1"
                     android:text="时间："
                     android:textColor="@color/secondarytext"
                     android:textSize="12sp" />
@@ -94,10 +95,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:maxLines="3"
+                    android:maxLines="1"
                     android:text="地点："
                     android:textColor="@color/secondarytext"
                     android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:maxLines="1"
+                    android:text="创建者："
+                    android:textColor="@color/secondarytext"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
             </LinearLayout>
 
             <com.facebook.drawee.view.SimpleDraweeView
@@ -271,7 +283,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:text="@string/text_wrong_info"
+                    android:text="@string/text_to_improve"
                     android:textColor="@drawable/selector_text_red" />
             </RelativeLayout>
 

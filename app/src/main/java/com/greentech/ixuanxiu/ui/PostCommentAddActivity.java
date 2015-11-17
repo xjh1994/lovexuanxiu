@@ -38,7 +38,6 @@ public class PostCommentAddActivity extends BaseActivity {
 
         post = (Post) data.getSerializable("post");
 
-
     }
 
     @Override

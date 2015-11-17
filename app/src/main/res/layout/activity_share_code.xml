@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:id="@+id/layout_share_code"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/selector_layout_bg"
+        android:clickable="true"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/share_code_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的邀请码："
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/share_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/share_code_text"
+            android:textColor="@color/primarycolor"
+            android:textSize="18sp"
+            tools:text="45a1f9s" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layout_push"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/selector_layout_bg"
+        android:clickable="true"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/recomment_count_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已推荐："
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/recommend_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/recomment_count_text"
+            android:textColor="@color/primarycolor"
+            android:textSize="18sp"
+            tools:text="10人" />
+    </RelativeLayout>
+
+    <com.gc.materialdesign.views.ButtonRectangle
+        android:id="@+id/copy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/primarycolor"
+        android:text="@string/copy_share_code"
+        android:visibility="gone" />
+
+    <com.gc.materialdesign.views.ButtonRectangle
+        android:id="@+id/recommend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/primarycolor"
+        android:text="@string/recommend_to_friends"
+        android:visibility="gone" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/tips_share_code"
+        android:textColor="@color/secondarytext" />
+
+</LinearLayout>

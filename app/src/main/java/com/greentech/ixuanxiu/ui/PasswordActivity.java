@@ -90,12 +90,13 @@ public class PasswordActivity extends AppCompatActivity {
                 myUser.setPassword(pass);
                 myUser.setPhone(phone);
                 myUser.setNick(nick);
+                myUser.setStatus(0);
                 myUser.signUp(getApplicationContext(), new SaveListener() {
                     @Override
                     public void onSuccess() {
                         toast("注册成功");
                         finish();
-                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                        startActivity(new Intent(getApplicationContext(), AvatarActivity.class));
                         overridePendingTransition(android.R.anim.slide_in_left,
                                 android.R.anim.slide_out_right);
                     }

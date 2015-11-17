@@ -58,7 +58,7 @@ public class PostCourseListActivity extends BaseActivity implements MyItemClickL
 
     @Override
     public void initViews() {
-        if (null == getCurrentUser()) return;
+//        if (null == getCurrentUser()) return;
 
         ultimateRecyclerView.setHasFixedSize(false);
         linearLayoutManager = new LinearLayoutManager(PostCourseListActivity.this);

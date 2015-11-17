@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.greentech.ixuanxiu.Config;
 import com.greentech.ixuanxiu.R;
 import com.greentech.ixuanxiu.bean.Post;
 import com.greentech.ixuanxiu.bean.Post;
@@ -55,14 +56,14 @@ public class PostAdapter extends UltimateViewAdapter {
 
             if (null != c.getMyUser().getAvatarFile()) {
                 if (null == context) {
-                    Uri uri = Uri.parse((c.getMyUser().getAvatarSmall()));
+                    Uri uri = Uri.parse(Config.logo_url);
                     ((ViewHolder) holder).image.setImageURI(uri);
                 } else {
                     Uri uri = Uri.parse((c.getMyUser().getAvatarFile().getFileUrl(context)));
                     ((ViewHolder) holder).image.setImageURI(uri);
                 }
             } else {
-                Uri uri = Uri.parse((c.getMyUser().getAvatarSmall()));
+                Uri uri = Uri.parse((Config.logo_url));
                 ((ViewHolder) holder).image.setImageURI(uri);
             }
 

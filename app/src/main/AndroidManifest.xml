@@ -124,6 +124,15 @@
             android:name=".ui.MyIntroActivity"
             android:label="@string/intro_page"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".ui.ShareCodeActivity"
+            android:label="@string/share_code"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".ui.AvatarActivity"
+            android:label="@string/avatar"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
 
         <!-- Mob短信 -->
         <activity

@@ -11,6 +11,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.greentech.ixuanxiu.Config;
 import com.greentech.ixuanxiu.R;
 import com.greentech.ixuanxiu.bean.PostComment;
 import com.greentech.ixuanxiu.bean.Post;
@@ -55,14 +56,14 @@ public class PostCommentAdapter extends UltimateViewAdapter {
 
             if (null != myUser.getAvatarFile()) {
                 if (null == context) {
-                    Uri uri = Uri.parse((myUser.getAvatarSmall()));
+                    Uri uri = Uri.parse(Config.logo_url);
                     ((ViewHolder) holder).image.setImageURI(uri);
                 } else {
                     Uri uri = Uri.parse((myUser.getAvatarFile().getFileUrl(context)));
                     ((ViewHolder) holder).image.setImageURI(uri);
                 }
             } else {
-                Uri uri = Uri.parse((myUser.getAvatarSmall()));
+                Uri uri = Uri.parse(Config.logo_url);
                 ((ViewHolder) holder).image.setImageURI(uri);
             }
             ((ViewHolder) holder).username.setText(myUser.getNick());

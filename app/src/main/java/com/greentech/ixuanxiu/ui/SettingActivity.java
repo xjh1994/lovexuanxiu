@@ -44,21 +44,21 @@ public class SettingActivity extends BaseActivity {
     public void initViews() {
         Uri uri = null;
         if (null != BmobUser.getCurrentUser(this, MyUser.class)) {
-            username.setText(getCurrentUser().getNick());
-            phone.setText(getCurrentUser().getPhone());
-            if (null != getCurrentUser().getAvatarFile()) {
-                uri = Uri.parse(getCurrentUser().getAvatarFile().getFileUrl(this));
-            } else {
-                uri = Uri.parse(Config.logo_url);
-            }
+            if (null != getCurrentUser()) {
+                username.setText(getCurrentUser().getNick());
+                phone.setText(getCurrentUser().getPhone());
+                if (null != getCurrentUser().getAvatarFile()) {
+                    uri = Uri.parse(getCurrentUser().getAvatarFile().getFileUrl(this));
+                } else {
+                    uri = Uri.parse(Config.logo_url);
+                }
+            } else return;
         } else {
             uri = Uri.parse(Config.logo_url);
             username.setText(getString(R.string.app_name));
             phone.setText(R.string.click_to_login);
         }
         image.setImageURI(uri);
-
-
     }
 
     @Override
@@ -137,7 +137,9 @@ public class SettingActivity extends BaseActivity {
         layoutShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showShare();
+                if (null == getCurrentUser())   return;
+                startActivity(new Intent(SettingActivity.this, ShareCodeActivity.class));
+//                showShare();
             }
         });
         layoutExit.setOnClickListener(new View.OnClickListener() {

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.widget.Toast;
 
 import com.greentech.ixuanxiu.R;
 import com.greentech.ixuanxiu.bean.MyUser;
@@ -55,7 +56,19 @@ public class HomeActivity extends MaterialNavigationDrawer {
         }
         if (null == home) {
             home = newSection("爱选修", R.drawable.ic_home, fragmentHome);
-            discuss = newSection("讨论区", R.drawable.ic_comment, new Intent(this, PostCourseListActivity.class));
+            discuss = newSection("讨论区", R.drawable.ic_comment, new MaterialSectionListener() {
+                @Override
+                public void onClick(MaterialSection section) {
+                    if (null == BmobUser.getCurrentUser(HomeActivity.this, MyUser.class)) {
+                        Toast.makeText(HomeActivity.this, getString(R.string.toast_need_login), Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                        discuss.unSelect();
+                        return;
+                    }
+                    startActivity(new Intent(HomeActivity.this, PostCourseListActivity.class));
+                    discuss.unSelect();
+                }
+            });
             mine = newSection("我的课程", R.drawable.ic_school, new Intent(this, MineActivity.class));
             all = newSection("发现", R.drawable.ic_location, new Intent(this, CourseListActivity.class));
             jwc = newSection("教务系统", R.drawable.ic_public, new MaterialSectionListener() {

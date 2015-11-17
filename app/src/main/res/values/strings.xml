@@ -150,4 +150,17 @@
     <string name="title_latest_course">最新课程</string>
     <string name="toast_already_login">已登录</string>
     <string name="intro_page">引导界面</string>
+    <string name="text_to_improve">我来完善</string>
+    <string name="toast_need_login">登录后方可进行此操作</string>
+    <string name="toast_locked_account">账号已被锁定，请联系管理员</string>
+    <string name="share_code">邀请好友注册</string>
+    <string name="get_share_code_success">成功生成邀请码</string>
+    <string name="recommend_to_friends">推荐给好友</string>
+    <string name="copy_share_code">复制邀请码</string>
+    <string name="copy_to_keyboard">已复制到剪贴板</string>
+    <string name="tips_share_code">Tips: 分享爱选修给有需要的小伙伴，Ta用你的邀请码注册成功后，你就可以获得声望值奖励。</string>
+    <string name="serialnumber">邀请码</string>
+    <string name="skip">跳过</string>
+    <string name="easy_to_find">方便小伙伴们认出你来</string>
+    <string name="upload_avatar">上传</string>
 </resources>

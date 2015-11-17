@@ -142,7 +142,7 @@ public class FragmentHomeTest extends FragmentBase {
                         TextSliderView textSliderView = new TextSliderView(getActivity());
                         textSliderView
                                 .description(list.get(i).getName())
-                                .image(list.get(i).getImageSmall())
+                                .image(list.get(i).getImageFile().getFileUrl(getActivity()))
                                 .setScaleType(BaseSliderView.ScaleType.Fit);
                         final int finalI = i;
                         textSliderView.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
@@ -167,7 +167,7 @@ public class FragmentHomeTest extends FragmentBase {
 //                    sliderLayout.setPresetTransformer(SliderLayout.Transformer.Accordion);
                     sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Right_Bottom);
 //                    sliderLayout.setCustomAnimation(new DescriptionAnimation());
-                    sliderLayout.startAutoCycle(4000, 4000, false);
+                    sliderLayout.startAutoCycle(4000, 4000, true);
                 }
             }
 
@@ -470,12 +470,12 @@ public class FragmentHomeTest extends FragmentBase {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        menu.add("签到").setIcon(R.drawable.ic_today).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        /*menu.add("签到").setIcon(R.drawable.ic_today).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 return true;
             }
-        }).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        }).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);*/
         menu.add("搜索").setIcon(R.drawable.ic_search).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {

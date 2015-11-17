@@ -3,6 +3,7 @@ package com.greentech.ixuanxiu.bean;
 import java.io.File;
 
 import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.datatype.BmobFile;
 
 /**
  * Created by xjh1994 on 2015/11/5.
@@ -16,6 +17,7 @@ public class Banner extends BmobObject {
     private String content;
     private String imageSmall;
     private String imageLarge;
+    private BmobFile imageFile;
     private String url;
     private Integer order;
     private File image;
@@ -50,6 +52,14 @@ public class Banner extends BmobObject {
 
     public void setImageLarge(String imageLarge) {
         this.imageLarge = imageLarge;
+    }
+
+    public BmobFile getImageFile() {
+        return imageFile;
+    }
+
+    public void setImageFile(BmobFile imageFile) {
+        this.imageFile = imageFile;
     }
 
     public String getUrl() {

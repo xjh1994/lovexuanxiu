@@ -87,6 +87,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:maxLines="1"
+                        android:maxWidth="110dp"
                         tools:text="课程名称" />
                 </LinearLayout>
 
@@ -113,6 +114,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:maxLines="1"
+                        android:maxWidth="110dp"
                         tools:text="课程名称" />
                 </LinearLayout>
 
@@ -140,6 +142,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:maxLines="1"
+                        android:maxWidth="110dp"
                         tools:text="课程名称" />
                 </LinearLayout>
 
@@ -209,6 +212,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:maxLines="1"
+                        android:maxWidth="110dp"
                         tools:text="课程名称" />
                 </LinearLayout>
 
@@ -235,6 +239,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:maxLines="1"
+                        android:maxWidth="110dp"
                         tools:text="课程名称" />
                 </LinearLayout>
 
@@ -262,6 +267,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:maxLines="1"
+                        android:maxWidth="110dp"
                         tools:text="课程名称" />
                 </LinearLayout>
 
@@ -331,6 +337,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:maxLines="1"
+                        android:maxWidth="110dp"
                         tools:text="课程名称" />
                 </LinearLayout>
 
@@ -357,6 +364,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:maxLines="1"
+                        android:maxWidth="110dp"
                         tools:text="课程名称" />
                 </LinearLayout>
 
@@ -384,6 +392,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:maxLines="1"
+                        android:maxWidth="110dp"
                         tools:text="课程名称" />
                 </LinearLayout>
 
@@ -453,6 +462,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:maxLines="1"
+                        android:maxWidth="110dp"
                         tools:text="课程名称" />
                 </LinearLayout>
 
@@ -479,6 +489,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:maxLines="1"
+                        android:maxWidth="110dp"
                         tools:text="课程名称" />
                 </LinearLayout>
 
@@ -506,6 +517,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:maxLines="1"
+                        android:maxWidth="110dp"
                         tools:text="课程名称" />
                 </LinearLayout>
 

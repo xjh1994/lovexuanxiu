@@ -60,7 +60,6 @@ public class PostListActivity extends BaseActivity implements MyItemClickListene
 
     @Override
     public void initViews() {
-        if (null == getCurrentUser()) return;
 
         Bundle data = getIntent().getExtras();
         if (null == data) finish();

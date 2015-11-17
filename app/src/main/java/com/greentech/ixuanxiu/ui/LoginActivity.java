@@ -47,6 +47,8 @@ public class LoginActivity extends AppCompatActivity {
     ButtonRectangle login;
     @Bind(R.id.register)
     TextView register;
+    @Bind(R.id.overview)
+    TextView overview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,6 +155,16 @@ public class LoginActivity extends AppCompatActivity {
                 registerPage.show(getApplicationContext());
 //                finish();
 //                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+            }
+        });
+
+        overview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                overridePendingTransition(android.R.anim.slide_in_left,
+                        android.R.anim.slide_out_right);
             }
         });
     }

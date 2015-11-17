@@ -66,7 +66,7 @@ public class PostDetailActivity extends BaseActivity implements MyItemClickListe
         } else if (!TextUtils.isEmpty(post.getMyUser().getAvatarSmall())) {
             uri = Uri.parse(post.getMyUser().getAvatarSmall());
         } else {
-            uri = Uri.parse("res://com.greentech.ixuanxiu/" + R.drawable.ic_launcher);
+            uri = Uri.parse(Config.logo_url);
         }
         image.setImageURI(uri);
 
@@ -145,6 +145,8 @@ public class PostDetailActivity extends BaseActivity implements MyItemClickListe
                 this.finish();
                 break;
             case R.id.send:
+                if (null == getCurrentUser()) return false;
+
                 Bundle data = new Bundle();
                 data.putSerializable("post", post);
                 Intent intent = new Intent(PostDetailActivity.this, PostCommentAddActivity.class);
