@@ -163,4 +163,9 @@
     <string name="skip">跳过</string>
     <string name="easy_to_find">方便小伙伴们认出你来</string>
     <string name="upload_avatar">上传</string>
+    <string name="yaoqingma">邀请码</string>
+    <string name="code_not_exist">邀请码不存在</string>
+    <string name="username_to_fill">用户名未填写</string>
+    <string name="password_to_fill">密码未填写</string>
+    <string name="code_to_fill">邀请码未填写</string>
 </resources>

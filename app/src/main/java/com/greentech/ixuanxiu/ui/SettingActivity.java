@@ -137,9 +137,9 @@ public class SettingActivity extends BaseActivity {
         layoutShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (null == getCurrentUser())   return;
-                startActivity(new Intent(SettingActivity.this, ShareCodeActivity.class));
-//                showShare();
+//                if (null == getCurrentUser())   return;
+//                startActivity(new Intent(SettingActivity.this, ShareCodeActivity.class));
+                showShare();
             }
         });
         layoutExit.setOnClickListener(new View.OnClickListener() {

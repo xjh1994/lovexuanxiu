@@ -133,6 +133,11 @@
             android:label="@string/avatar"
             android:screenOrientation="portrait"
             android:theme="@style/MyAppTheme"></activity>
+        <activity
+            android:name=".ui.PasswordShareCodeActivity"
+            android:label="@string/register"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
 
         <!-- Mob短信 -->
         <activity
