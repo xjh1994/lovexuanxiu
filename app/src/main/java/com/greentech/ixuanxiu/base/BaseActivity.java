@@ -132,7 +132,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected MyUser getCurrentUser() {
         currentUser = MyUser.getCurrentUser(this, MyUser.class);
-        if (currentUser == null) {
+        if (null == currentUser) {
             toast(getString(R.string.toast_need_login));
 //            finish();
             startActivity(new Intent(this, LoginActivity.class));

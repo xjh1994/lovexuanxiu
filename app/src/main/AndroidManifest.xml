@@ -106,7 +106,7 @@
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".ui.StartLessonActivity"
-            android:label="@string/title_start_lesson"
+            android:label="@string/title_add_course"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".ui.UserInfoEditActivity"
@@ -138,6 +138,10 @@
             android:label="@string/register"
             android:screenOrientation="portrait"
             android:theme="@style/MyAppTheme"></activity>
+        <activity
+            android:name=".ui.CommonTabActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" ></activity>
 
         <!-- Mob短信 -->
         <activity

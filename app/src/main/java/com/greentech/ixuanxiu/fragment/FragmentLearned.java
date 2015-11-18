@@ -45,7 +45,7 @@ public class FragmentLearned extends FragmentBase implements MyItemClickListener
 
     LinearLayoutManager linearLayoutManager;
     List courses = new ArrayList<>();
-    CourseAdapter courseAdapter = new CourseAdapter(getActivity(), courses);
+    CourseAdapter courseAdapter;
     private Titanic titanic;
 
     @Nullable
@@ -60,6 +60,7 @@ public class FragmentLearned extends FragmentBase implements MyItemClickListener
     }
 
     private void initView() {
+        courseAdapter  = new CourseAdapter(getActivity(), courses);
         ultimateRecyclerView.setHasFixedSize(false);
         linearLayoutManager = new LinearLayoutManager(getActivity());
         ultimateRecyclerView.setLayoutManager(linearLayoutManager);
@@ -92,7 +93,7 @@ public class FragmentLearned extends FragmentBase implements MyItemClickListener
                     }
                     courseAdapter.notifyDataSetChanged();
                 } else {
-                    toast(getString(R.string.toast_course_list_empty));
+                    toast(getString(R.string.toast_no_learned_course));
                 }
                 titanic.cancel();
             }

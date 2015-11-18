@@ -46,14 +46,13 @@ public class FragmentFavorite extends FragmentBase implements MyItemClickListene
 
     LinearLayoutManager linearLayoutManager;
     List courses = new ArrayList<>();
-    CourseAdapter courseAdapter = new CourseAdapter(getActivity(), courses);
+    CourseAdapter courseAdapter;
     private Titanic titanic;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_course_list, container, false);
-
         ButterKnife.bind(this, view);
 
         initView();
@@ -61,15 +60,8 @@ public class FragmentFavorite extends FragmentBase implements MyItemClickListene
         return view;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (null == getCurrentUser()) {
-            return;
-        }
-    }
-
     private void initView() {
+        courseAdapter  = new CourseAdapter(getActivity(), courses);
         ultimateRecyclerView.setHasFixedSize(false);
         linearLayoutManager = new LinearLayoutManager(getActivity());
         ultimateRecyclerView.setLayoutManager(linearLayoutManager);
@@ -102,7 +94,7 @@ public class FragmentFavorite extends FragmentBase implements MyItemClickListene
                     }
                     courseAdapter.notifyDataSetChanged();
                 } else {
-                    toast(getString(R.string.toast_course_list_empty));
+                    toast(getString(R.string.toast_no_favorite_course));
                 }
                 titanic.cancel();
             }

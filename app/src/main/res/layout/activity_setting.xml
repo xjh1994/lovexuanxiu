@@ -49,6 +49,28 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/layout_mine"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/selector_layout_bg"
+        android:clickable="true"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/mine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/ic_school_grey600_24dp"
+            android:drawablePadding="16dp"
+            android:gravity="center_vertical"
+            android:text="@string/title_mine"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/layout_push"
         android:layout_width="match_parent"
         android:layout_height="48dp"

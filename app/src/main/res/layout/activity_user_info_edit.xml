@@ -118,9 +118,9 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
+            android:text="@string/change"
             android:textColor="@color/secondarytext"
-            android:textSize="16sp"
-            android:text="@string/change" />
+            android:textSize="16sp" />
 
     </RelativeLayout>
 
@@ -148,6 +148,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
+            android:maxWidth="200dp"
+            android:singleLine="true"
             android:textColor="@color/secondarytext"
             android:textSize="16sp"
             tools:text="@string/not_writed" />

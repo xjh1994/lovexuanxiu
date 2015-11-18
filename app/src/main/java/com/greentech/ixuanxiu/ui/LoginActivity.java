@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         if (null != MyUser.getCurrentUser(this, MyUser.class)) {
             toast(getString(R.string.toast_already_login));
             AppManager.getAppManager().finishAllActivity();
-            startActivity(new Intent(this, HomeActivity.class));
+            startActivity(new Intent(this, CommonTabActivity.class));
         }
 
         AppManager.getAppManager().addActivity(this);
@@ -117,8 +117,8 @@ public class LoginActivity extends AppCompatActivity {
                     public void onSuccess() {
                         toast("登录成功");
                         finish();
-                        if (null == AppManager.getAppManager().findActivity(HomeActivity.class)) {
-                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                        if (null == AppManager.getAppManager().findActivity(CommonTabActivity.class)) {
+                            startActivity(new Intent(getApplicationContext(), CommonTabActivity.class));
                             overridePendingTransition(android.R.anim.slide_in_left,
                                     android.R.anim.slide_out_right);
                         }
@@ -162,7 +162,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                startActivity(new Intent(getApplicationContext(), CommonTabActivity.class));
                 overridePendingTransition(android.R.anim.slide_in_left,
                         android.R.anim.slide_out_right);
             }

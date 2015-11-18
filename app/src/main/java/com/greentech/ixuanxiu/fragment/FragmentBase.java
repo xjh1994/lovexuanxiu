@@ -1,5 +1,6 @@
 package com.greentech.ixuanxiu.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,7 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.greentech.ixuanxiu.R;
 import com.greentech.ixuanxiu.bean.MyUser;
+import com.greentech.ixuanxiu.ui.LoginActivity;
 
 /**
  * Created by xjh1994 on 2015/10/26.
@@ -23,9 +26,14 @@ public class FragmentBase extends Fragment {
     public MyUser getCurrentUser() {
         currentUser = MyUser.getCurrentUser(getActivity(), MyUser.class);
         if (null == currentUser) {
-            getActivity().onBackPressed();
+            toast(getString(R.string.toast_need_login));
+            startActivity(new Intent(getActivity(), LoginActivity.class));
+            return null;
+        } else if (1 == currentUser.getStatus()) {
+            toast(getString(R.string.toast_locked_account));
             return null;
         }
+
         return currentUser;
     }
 

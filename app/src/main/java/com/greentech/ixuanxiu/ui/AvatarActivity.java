@@ -62,7 +62,7 @@ public class AvatarActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                startActivity(new Intent(AvatarActivity.this, HomeActivity.class));
+                startActivity(new Intent(AvatarActivity.this, CommonTabActivity.class));
                 overridePendingTransition(android.R.anim.slide_in_left,
                         android.R.anim.slide_out_right);
             }

@@ -27,10 +27,12 @@ import com.greentech.ixuanxiu.bean.Course;
 import com.greentech.ixuanxiu.bean.Hot;
 import com.greentech.ixuanxiu.bean.Nosign;
 import com.greentech.ixuanxiu.bean.Recommend;
+import com.greentech.ixuanxiu.ui.CommonTabActivity;
 import com.greentech.ixuanxiu.ui.CourseDetailActivity;
 import com.greentech.ixuanxiu.ui.CourseListActivity;
 import com.greentech.ixuanxiu.ui.SearchCourseActivity;
 import com.greentech.ixuanxiu.ui.SettingActivity;
+import com.greentech.ixuanxiu.ui.StartLessonActivity;
 import com.greentech.ixuanxiu.ui.WebViewActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -473,6 +475,7 @@ public class FragmentHomeTest extends FragmentBase {
         /*menu.add("签到").setIcon(R.drawable.ic_today).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
+                startActivity(new Intent(getActivity(), CommonTabActivity.class));
                 return true;
             }
         }).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);*/
@@ -483,13 +486,21 @@ public class FragmentHomeTest extends FragmentBase {
                 return true;
             }
         }).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-        menu.add("设置").setIcon(R.drawable.ic_setting).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        menu.add("添加课程").setIcon(R.drawable.ic_add).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (null == getCurrentUser()) return false;
+                startActivity(new Intent(getActivity(), StartLessonActivity.class));
+                return true;
+            }
+        }).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        /*menu.add("设置").setIcon(R.drawable.ic_setting).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 startActivity(new Intent(getActivity(), SettingActivity.class));
                 return true;
             }
-        }).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        }).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);*/
     }
 
     @Override

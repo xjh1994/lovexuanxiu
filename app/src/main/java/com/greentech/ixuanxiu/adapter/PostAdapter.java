@@ -63,7 +63,7 @@ public class PostAdapter extends UltimateViewAdapter {
                     ((ViewHolder) holder).image.setImageURI(uri);
                 }
             } else {
-                Uri uri = Uri.parse((Config.logo_url));
+                Uri uri = Uri.parse(Config.logo_url);
                 ((ViewHolder) holder).image.setImageURI(uri);
             }
 

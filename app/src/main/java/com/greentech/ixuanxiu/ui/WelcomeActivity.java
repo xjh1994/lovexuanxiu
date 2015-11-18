@@ -120,7 +120,7 @@ public class WelcomeActivity extends AppCompatActivity/* implements Runnable */ 
 //                WelcomeActivity.this.finish();
                 MyUser bmobUser = MyUser.getCurrentUser(this, MyUser.class);
                 if (bmobUser != null) {
-                    startActivity(new Intent(WelcomeActivity.this, HomeActivity.class));
+                    startActivity(new Intent(WelcomeActivity.this, CommonTabActivity.class));
                     overridePendingTransition(android.R.anim.slide_in_left,
                             android.R.anim.slide_out_right);
                 } else {
