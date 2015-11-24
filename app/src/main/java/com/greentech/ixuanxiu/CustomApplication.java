@@ -1,9 +1,12 @@
 package com.greentech.ixuanxiu;
 
 import android.app.Application;
+import android.app.NotificationManager;
 import android.content.Context;
+import android.media.MediaPlayer;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.greentech.ixuanxiu.util.SharePreferenceUtil;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
@@ -16,8 +19,12 @@ import com.orhanobut.logger.Logger;
 import com.tencent.bugly.crashreport.CrashReport;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import cn.bmob.im.BmobChat;
+import cn.bmob.im.BmobUserManager;
+import cn.bmob.im.bean.BmobChatUser;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.socialization.Socialization;
 import cn.smssdk.SMSSDK;
@@ -83,5 +90,66 @@ public class CustomApplication extends Application {
 
     public static CustomApplication getInstance() {
         return mInstance;
+    }
+
+    // 单例模式，才能及时返回数据
+    SharePreferenceUtil mSpUtil;
+    public static final String PREFERENCE_NAME = "_sharedinfo";
+
+    public synchronized SharePreferenceUtil getSpUtil() {
+        if (mSpUtil == null) {
+            String currentId = BmobUserManager.getInstance(
+                    getApplicationContext()).getCurrentUserObjectId();
+            String sharedName = currentId + PREFERENCE_NAME;
+            mSpUtil = new SharePreferenceUtil(this, sharedName);
+        }
+        return mSpUtil;
+    }
+
+    NotificationManager mNotificationManager;
+
+    public NotificationManager getNotificationManager() {
+        if (mNotificationManager == null)
+            mNotificationManager = (NotificationManager) getSystemService(android.content.Context.NOTIFICATION_SERVICE);
+        return mNotificationManager;
+    }
+
+    MediaPlayer mMediaPlayer;
+
+    public synchronized MediaPlayer getMediaPlayer() {
+        if (mMediaPlayer == null)
+            mMediaPlayer = MediaPlayer.create(this, R.raw.notify);
+        return mMediaPlayer;
+    }
+
+    private Map<String, BmobChatUser> contactList = new HashMap<String, BmobChatUser>();
+
+    /**
+     * 获取内存中好友user list
+     *
+     * @return
+     */
+    public Map<String, BmobChatUser> getContactList() {
+        return contactList;
+    }
+
+    /**
+     * 设置好友user list到内存中
+     *
+     * @param contactList
+     */
+    public void setContactList(Map<String, BmobChatUser> contactList) {
+        if (this.contactList != null) {
+            this.contactList.clear();
+        }
+        this.contactList = contactList;
+    }
+
+    /**
+     * 退出登录,清空缓存数据
+     */
+    public void logout() {
+        BmobUserManager.getInstance(getApplicationContext()).logout();
+        setContactList(null);
     }
 }

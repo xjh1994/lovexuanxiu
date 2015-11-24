@@ -5,14 +5,19 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.greentech.ixuanxiu.Config;
 import com.greentech.ixuanxiu.R;
 import com.greentech.ixuanxiu.base.BaseActivity;
 import com.greentech.ixuanxiu.bean.Post;
 import com.greentech.ixuanxiu.bean.PostComment;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import cn.bmob.v3.BmobPushManager;
 import cn.bmob.v3.listener.SaveListener;
 
 /**
@@ -85,8 +90,25 @@ public class PostCommentAddActivity extends BaseActivity {
         postComment.save(this, new SaveListener() {
             @Override
             public void onSuccess() {
-                toast(getString(R.string.toast_comment_success));
-                finish();
+                if (getCurrentUser().getObjectId() != post.getMyUser().getObjectId()) {
+                    BmobPushManager pushManager = new BmobPushManager(PostCommentAddActivity.this);
+                    try {
+                        JSONObject jo = new JSONObject();
+                        jo.put("type", Config.Push_Type_Discuss);
+                        jo.put("alert", "有人评论了你，去看看吧");
+                        jo.put("toId", post.getMyUser().getObjectId());
+                        jo.put("username", post.getMyUser().getNick());
+                        jo.put("postId", post.getObjectId());
+
+                        pushManager.pushMessageAll(jo);
+
+                        toast(getString(R.string.toast_comment_success));
+                        finish();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
             }
 
             @Override

@@ -32,6 +32,9 @@ import com.greentech.ixuanxiu.util.ViewFindUtils;
 import java.util.ArrayList;
 import java.util.Random;
 
+import cn.bmob.im.BmobChat;
+import cn.bmob.v3.update.BmobUpdateAgent;
+
 public class CommonTabActivity extends AppCompatActivity {
     private Context context = this;
     private ArrayList<Fragment> fragments = new ArrayList<>();
@@ -78,6 +81,8 @@ public class CommonTabActivity extends AppCompatActivity {
 
         tl_2();
 
+        init();
+
         /*//两位数
         tl_2.showMsg(0, 55);
         tl_2.setMsgMargin(0, -5, 5);
@@ -100,6 +105,14 @@ public class CommonTabActivity extends AppCompatActivity {
         if (rtv_2_3 != null) {
             rtv_2_3.getDelegate().setBackgroundColor(Color.parseColor("#6D8FB0"));
         }*/
+    }
+
+    private void init() {
+        //自动更新
+        BmobUpdateAgent.setUpdateOnlyWifi(false);
+        BmobUpdateAgent.update(this);
+
+//        BmobChat.getInstance(this).startPollService(30 * 1000);
     }
 
     Random random = new Random();
@@ -160,6 +173,13 @@ public class CommonTabActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             return fragments.get(position);
         }
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppManager.getAppManager().finishActivity(this);
     }
 
 }

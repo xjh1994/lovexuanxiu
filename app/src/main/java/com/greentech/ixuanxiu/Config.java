@@ -22,4 +22,8 @@ public class Config {
     public static final String KEY_PUSH = "message_push";
     public static String logo_url = "http://file.bmob.cn/M02/81/6B/oYYBAFY_M_OABRWxAADnNuKnuy4067.jpg";
     public static int search_times = 5;
+    public static String Push_Type_Common = "common";
+    public static String Push_Type_User = "user";
+    public static String Push_Type_Discuss = "discuss";
+    public static String Push_Type_Course = "course";
 }
