@@ -42,7 +42,7 @@ public class FragmentPostList extends FragmentBase implements MyItemClickListene
 
     LinearLayoutManager linearLayoutManager;
     List posts = new ArrayList<>();
-    PostCourseAdapter postAdapter = new PostCourseAdapter(getActivity(), posts);
+    PostCourseAdapter postAdapter;
     private Titanic titanic;
 
     private int curPage = 0;
@@ -63,6 +63,8 @@ public class FragmentPostList extends FragmentBase implements MyItemClickListene
 
     private void initView() {
 //        setTitle("关于" + course.getName() + "的讨论");
+
+        postAdapter = new PostCourseAdapter(getActivity(), posts);
 
         ultimateRecyclerView.setHasFixedSize(false);
         linearLayoutManager = new LinearLayoutManager(getActivity());

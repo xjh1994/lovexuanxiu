@@ -112,7 +112,7 @@ public class PostDetailActivity extends BaseActivity implements MyItemClickListe
         query.addWhereMatchesQuery("post", "Post", innerCourseQuery);
         query.order("-createdAt");
         query.include("post,myUser");
-        query.setLimit(Config.COMMENT_DETAIL_COUNT_PERPAGE);
+        query.setLimit(Config.COMMENT_DETAIL_COUNT_ONCE);
         query.findObjects(PostDetailActivity.this, new FindListener<PostComment>() {
             @Override
             public void onSuccess(List<PostComment> list) {
@@ -121,6 +121,7 @@ public class PostDetailActivity extends BaseActivity implements MyItemClickListe
                     comments.addAll(list);
                 } else {
                     commentCount.setText("0");
+                    commentText.setText(getString(R.string.toast_no_comment));
 //                    toast(getString(R.string.toast_nobody_comment));
                 }
                 postCommentListAdapter = new PostCommentListAdapter(PostDetailActivity.this, comments);
@@ -193,5 +194,7 @@ public class PostDetailActivity extends BaseActivity implements MyItemClickListe
     MyListView commentListView;
     @Bind(R.id.scrollView)
     ScrollView scrollView;
+    @Bind(R.id.comment_text)
+    TextView commentText;
 
 }

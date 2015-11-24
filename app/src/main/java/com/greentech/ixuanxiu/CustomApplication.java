@@ -47,7 +47,7 @@ public class CustomApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Logger.init(getResources().getString(R.string.app_name)).setLogLevel(LogLevel.NONE);
+        Logger.init(getResources().getString(R.string.app_name)).setLogLevel(LogLevel.FULL);
         mInstance = this;
         init();
 

@@ -4,13 +4,18 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.greentech.ixuanxiu.Config;
 import com.greentech.ixuanxiu.R;
 import com.greentech.ixuanxiu.base.BaseActivity;
 import com.greentech.ixuanxiu.bean.Post;
 import com.greentech.ixuanxiu.bean.PostComment;
-import com.rengwuxian.materialedittext.MaterialEditText;
+import com.rockerhieu.emojicon.EmojiconEditText;
+import com.rockerhieu.emojicon.EmojiconGridFragment;
+import com.rockerhieu.emojicon.EmojiconsFragment;
+import com.rockerhieu.emojicon.TextWatcherAdapter;
+import com.rockerhieu.emojicon.emoji.Emojicon;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,7 +28,7 @@ import cn.bmob.v3.listener.SaveListener;
 /**
  * Created by xjh1994 on 2015/11/8.
  */
-public class PostCommentAddActivity extends BaseActivity {
+public class PostCommentAddActivity extends BaseActivity implements EmojiconGridFragment.OnEmojiconClickedListener, EmojiconsFragment.OnEmojiconBackspaceClickedListener {
     /**
      * 发帖评论
      */
@@ -42,6 +47,13 @@ public class PostCommentAddActivity extends BaseActivity {
         if (null == data) finish();
 
         post = (Post) data.getSerializable("post");
+
+        /*content.addTextChangedListener(new TextWatcherAdapter() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                content.setText(s);
+            }
+        });*/
 
     }
 
@@ -90,7 +102,8 @@ public class PostCommentAddActivity extends BaseActivity {
         postComment.save(this, new SaveListener() {
             @Override
             public void onSuccess() {
-                if (getCurrentUser().getObjectId() != post.getMyUser().getObjectId()) {
+//                Logger.d(post.getMyUser().getObjectId());
+                if (!getCurrentUser().getObjectId().equals(post.getMyUser().getObjectId())) {
                     BmobPushManager pushManager = new BmobPushManager(PostCommentAddActivity.this);
                     try {
                         JSONObject jo = new JSONObject();
@@ -101,14 +114,13 @@ public class PostCommentAddActivity extends BaseActivity {
                         jo.put("postId", post.getObjectId());
 
                         pushManager.pushMessageAll(jo);
-
-                        toast(getString(R.string.toast_comment_success));
-                        finish();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
 
+                toast(getString(R.string.toast_comment_success));
+                finish();
             }
 
             @Override
@@ -117,6 +129,16 @@ public class PostCommentAddActivity extends BaseActivity {
                 item.setEnabled(true);
             }
         });
+    }
+
+    @Override
+    public void onEmojiconClicked(Emojicon emojicon) {
+        EmojiconsFragment.input(content, emojicon);
+    }
+
+    @Override
+    public void onEmojiconBackspaceClicked(View v) {
+        EmojiconsFragment.backspace(content);
     }
 
     private boolean isTooLong() {
@@ -139,5 +161,5 @@ public class PostCommentAddActivity extends BaseActivity {
     }
 
     @Bind(R.id.content)
-    MaterialEditText content;
+    EmojiconEditText content;
 }

@@ -18,6 +18,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import cn.bmob.v3.BmobInstallation;
 import cn.bmob.v3.listener.SaveListener;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -95,6 +96,7 @@ public class PasswordActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess() {
                         toast("注册成功");
+                        BmobInstallation.getCurrentInstallation(PasswordActivity.this).save();
                         finish();
                         startActivity(new Intent(getApplicationContext(), AvatarActivity.class));
                         overridePendingTransition(android.R.anim.slide_in_left,

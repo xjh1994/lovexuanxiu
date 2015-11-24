@@ -24,6 +24,7 @@ import java.util.HashMap;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import cn.bmob.v3.BmobInstallation;
 import cn.bmob.v3.listener.SaveListener;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
@@ -116,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess() {
                         toast("登录成功");
+                        BmobInstallation.getCurrentInstallation(LoginActivity.this).save();
                         finish();
                         if (null == AppManager.getAppManager().findActivity(CommonTabActivity.class)) {
                             startActivity(new Intent(getApplicationContext(), CommonTabActivity.class));
